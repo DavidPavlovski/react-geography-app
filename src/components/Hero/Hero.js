@@ -3,13 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Wrapper, Content } from './Hero.styles';
+import { Link } from 'react-router-dom';
 
 export default function Hero({ countryName, countryFlag }){
    return (
       <Wrapper countryFlag={countryFlag}>
          <Content>
             <h2>{countryName}</h2>
-            <button>Link to country</button>
+            <button>
+               <Link to={`/country/${countryName}`}>Link to country</Link>
+            </button>
          </Content>
       </Wrapper>
    );

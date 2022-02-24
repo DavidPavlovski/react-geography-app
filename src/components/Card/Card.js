@@ -8,7 +8,7 @@ export default function Card({ countryName, countryFlag }){
       <Wrapper>
          <Image src={countryFlag} />
          <h2>{countryName}</h2>
-         <Link to='/'>See more info</Link>
+         <Link to={`/country/${countryName}`}>See more info</Link>
       </Wrapper>
    );
 }
