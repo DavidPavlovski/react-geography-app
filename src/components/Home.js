@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import COUNTRIES_API from '../COUNTRIES_API';
 
 import Spinner from './Spinner/Spinner';
+import Hero from './Hero/Hero';
 export default function Home(){
    const [ loading, setLoading ] = useState(false);
    const [ error, setError ] = useState(false);
@@ -23,6 +24,7 @@ export default function Home(){
    useEffect(() => {
       fetchCountries();
    }, []);
+
    if (error) {
       return (
          <div>
@@ -30,9 +32,17 @@ export default function Home(){
          </div>
       );
    }
+   if (loading) {
+      return <Spinner />;
+   }
+
+   const randomNumber = Math.floor(Math.random() * countries.length);
+
    return (
       <React.Fragment>
-         {loading && <Spinner />}
+         {countries.length > 0 && (
+            <Hero countryName={countries[randomNumber].name.official} countryFlag={countries[randomNumber].flags.svg} />
+         )}
          {countries.map((country) => <p key={country.name.official}>{country.name.official}</p>)}
       </React.Fragment>
    );
