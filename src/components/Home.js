@@ -4,6 +4,7 @@ import COUNTRIES_API from '../COUNTRIES_API';
 
 import Spinner from './Spinner/Spinner';
 import Hero from './Hero/Hero';
+import Grid from './Grid/Grid';
 export default function Home(){
    const [ loading, setLoading ] = useState(false);
    const [ error, setError ] = useState(false);
@@ -43,7 +44,7 @@ export default function Home(){
          {countries.length > 0 && (
             <Hero countryName={countries[randomNumber].name.official} countryFlag={countries[randomNumber].flags.svg} />
          )}
-         {countries.map((country) => <p key={country.name.official}>{country.name.official}</p>)}
+         <Grid countries={countries} />
       </React.Fragment>
    );
 }
