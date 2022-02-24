@@ -44,7 +44,8 @@ export default function Home(){
          {countries.length > 0 && (
             <Hero countryName={countries[randomNumber].name.official} countryFlag={countries[randomNumber].flags.svg} />
          )}
-         <Grid countries={countries} />
+
+         <Grid header='All countries' countries={countries} />
       </React.Fragment>
    );
 }
