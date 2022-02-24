@@ -20,6 +20,12 @@ export const GlobalStyles = createGlobalStyle`
          box-sizing:border-box;
          font-family :'Raleway' , sans-serif;
     }
+    button{
+        cursor:pointer;
+    }
+    a{
+        text-decoration:none;
+    }
 
     body{
         margin:0;
