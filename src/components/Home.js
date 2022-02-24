@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import COUNTRIES_API from '../COUNTRIES_API';
+
+import Spinner from './Spinner/Spinner';
 export default function Home(){
    const [ loading, setLoading ] = useState(false);
    const [ error, setError ] = useState(false);
@@ -21,8 +23,16 @@ export default function Home(){
    useEffect(() => {
       fetchCountries();
    }, []);
+   if (error) {
+      return (
+         <div>
+            <h1>Something Went Wrong</h1>
+         </div>
+      );
+   }
    return (
       <React.Fragment>
+         {loading && <Spinner />}
          {countries.map((country) => <p key={country.name.official}>{country.name.official}</p>)}
       </React.Fragment>
    );
