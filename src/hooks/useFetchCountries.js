@@ -20,14 +20,18 @@ const useFetchCountries = (searchTerm = '') => {
    };
 
    const searchCountries = async (searchTerm) => {
-      await COUNTRIES_API.searchCountries(searchTerm)
+      setLoading(true);
+      setError(false);
+      await fetch(`https://restcountries.com/v3.1/name/${searchTerm}`)
          .then((res) => {
-            if (!res.ok || res.status === 404) {
+            if (!res.ok) {
                setError(true);
+               setLoading(false);
             }
             return res.json();
          })
          .then((data) => {
+            setLoading(false);
             setCountries(data);
          })
          .catch((e) => {
