@@ -1,11 +1,15 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Wrapper, Logo, SearchBar } from './Navbar.styles';
 import globeIcon from '../../assets/icons/globe.svg';
 import searchIcon from '../../assets/icons/search-icon.svg';
 import { Link } from 'react-router-dom';
 
-export default function Navbar(){
+export default function Navbar({ searchTerm, setSearchTerm }){
+   const handleChange = (e) => {
+      setSearchTerm(e.target.value);
+   };
+
    return (
       <Wrapper>
          <Link to='/'>
@@ -17,8 +21,13 @@ export default function Navbar(){
 
          <SearchBar>
             <img src={searchIcon} alt='' />
-            <input type='text' placeholder='search country' />
+            <input type='text' placeholder='search country' value={searchTerm} onChange={handleChange} />
          </SearchBar>
       </Wrapper>
    );
 }
+
+Navbar.propTypes = {
+   searchTerm: PropTypes.string,
+   setSearchTerm: PropTypes.func
+};

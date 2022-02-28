@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { GlobalStyles } from './GlobalStyles';
 
@@ -9,11 +9,12 @@ import Home from './components/Home';
 import CountryDetails from './components/CountryDetails';
 
 function App(){
+   const [ searchTerm, setSearchTerm ] = useState('');
    return (
       <Router>
-         <Navbar />
+         <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
          <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home searchTerm={searchTerm} />} />
             <Route path='/country/:name' element={<CountryDetails />} />
          </Routes>
          <GlobalStyles />

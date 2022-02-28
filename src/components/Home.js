@@ -1,30 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-import COUNTRIES_API from '../COUNTRIES_API';
+import PropTypes from 'prop-types';
+import useFetchCountries from '../hooks/useFetchCountries';
 
 import Spinner from './Spinner/Spinner';
 import Hero from './Hero/Hero';
 import Grid from './Grid/Grid';
-export default function Home(){
-   const [ loading, setLoading ] = useState(false);
-   const [ error, setError ] = useState(false);
-   const [ countries, setCountries ] = useState([]);
 
-   const fetchCountries = async () => {
-      try {
-         setError(false);
-         setLoading(true);
-         const data = await COUNTRIES_API.fetchCountries();
-         setCountries(data);
-         setLoading(false);
-      } catch (e) {
-         setError(true);
-      }
-   };
+export default function Home({ searchTerm }){
+   const [ randomCountry, setRandomCountry ] = useState({});
+   const { countries, loading, error } = useFetchCountries(searchTerm);
 
-   useEffect(() => {
-      fetchCountries();
-   }, []);
+   useEffect(
+      () => {
+         const randomNumber = Math.floor(Math.random() * countries.length);
+         setRandomCountry(countries[randomNumber]);
+      },
+      [ countries ]
+   );
 
    if (error) {
       return (
@@ -33,19 +26,21 @@ export default function Home(){
          </div>
       );
    }
+
    if (loading) {
       return <Spinner />;
    }
 
-   const randomNumber = Math.floor(Math.random() * countries.length);
-
    return (
       <React.Fragment>
-         {countries.length > 0 && (
-            <Hero countryName={countries[randomNumber].name.official} countryFlag={countries[randomNumber].flags.svg} />
-         )}
+         {countries.length > 0 &&
+         !searchTerm && <Hero countryName={randomCountry.name.official} countryFlag={randomCountry.flags.svg} />}
 
-         <Grid header='All countries' countries={countries} />
+         {<Grid header={searchTerm ? `Results for ${searchTerm}` : 'All countries'} countries={countries} />}
       </React.Fragment>
    );
 }
+
+Home.propTypes = {
+   searchTerm: PropTypes.string
+};

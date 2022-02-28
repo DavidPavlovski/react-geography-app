@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Wrapper, Content } from './Grid.styles';
 
 import Card from '../Card/Card';
@@ -9,9 +9,14 @@ export default function Grid({ header, countries }){
          <h2>{header}</h2>
          <Content>
             {countries.map((country) => (
-               <Card key={country.name.official} countryName={country.name.official} countryFlag={country.flags.svg} />
+               <Card key={country.name.official} countryName={country.name.official} countryFlag={country.flags.png} />
             ))}
          </Content>
       </Wrapper>
    );
 }
+
+Grid.propTypes = {
+   header: PropTypes.string,
+   countries: PropTypes.array
+};
