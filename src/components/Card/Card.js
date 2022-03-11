@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 import { Wrapper, Image } from './Card.styles';
 
 export default function Card({ countryName, countryFlag, code }){
@@ -8,7 +8,7 @@ export default function Card({ countryName, countryFlag, code }){
       <Wrapper>
          <Image src={countryFlag} />
          <h2>{countryName}</h2>
-         <Link to={`/country/${code}`}>See more info</Link>
+         <Button path={`/country/${code}`}>See more info</Button>
       </Wrapper>
    );
 }

@@ -34,29 +34,4 @@ export const Content = styled.div`
          font-size: var(--font-size-XL);
       }
    }
-   a {
-      padding: 20px 0;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: var(--font-size-M);
-      background-color: var(--blue);
-      color: var(--white);
-      border: none;
-      border-radius: 10px;
-      transition: all 300ms ease;
-      :hover {
-         opacity: 0.8;
-         border-radius: 25px;
-         transform: translateY(-5px);
-         box-shadow: 0 20px 15px -20px rgba(255, 255, 255, 0.5), inset -15px -15px 10px -5px rgba(0, 0, 0, 0.5);
-      }
-      :active {
-         box-shadow: inset 15px 15px 10px -5px rgba(0, 0, 0, 0.5);
-         transform: translateY(-0);
-      }
-      a {
-         text-decoration: none;
-         color: var(--white);
-      }
-   }
 `;
