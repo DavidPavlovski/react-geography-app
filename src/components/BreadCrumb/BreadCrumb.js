@@ -3,8 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Wrapper } from './BreadCrumb.style';
-import { Link } from 'react-router-dom';
-
+import Button from '../Button/Button';
 export default function BreadCrumb({ setSortingOrder }){
    const handleChange = (e) => {
       setSortingOrder((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
@@ -28,7 +27,7 @@ export default function BreadCrumb({ setSortingOrder }){
                </select>
             </div>
          </div>
-         <Link to='/'>Test your geography knowlege</Link>
+         <Button path='/'>Test your geography knowlege</Button>
       </Wrapper>
    );
 }

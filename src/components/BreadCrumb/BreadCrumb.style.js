@@ -8,13 +8,9 @@ export const Wrapper = styled.div`
    align-items: center;
 
    a {
-      color: var(--white);
-      text-decoration: none;
-      background-color: var(--darkBlue);
-      padding: 10px 20px;
-      border: 3px solid var(--blue);
-      border-radius: 10px;
-      letter-spacing: 2px;
+      width: initial;
+      margin: 0;
+      padding: 10px 30px;
    }
 
    .sort-options {
