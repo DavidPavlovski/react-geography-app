@@ -13,6 +13,7 @@ export default function Grid({ header, countries }){
                   key={country.name.official}
                   countryName={country.name.official}
                   countryFlag={country.flags.png}
+                  capital={country.capital}
                   code={country.cca3}
                />
             ))}

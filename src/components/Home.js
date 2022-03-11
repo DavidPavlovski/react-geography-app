@@ -6,10 +6,35 @@ import useFetchCountries from '../hooks/useFetchCountries';
 import Spinner from './Spinner/Spinner';
 import Hero from './Hero/Hero';
 import Grid from './Grid/Grid';
+import BreadCrumb from './BreadCrumb/BreadCrumb';
 
 export default function Home({ searchTerm }){
    const [ randomCountry, setRandomCountry ] = useState({});
    const { loading, error, errorMsg, countries } = useFetchCountries(searchTerm);
+   const [ sortingOrder, setSortingOrder ] = useState({
+      property: 'countryName',
+      order: 'asc'
+   });
+
+   const sortedCountries = () => {
+      if (sortingOrder.property === 'countryName') {
+         return countries.sort((a, b) => {
+            if (sortingOrder.order === 'asc') {
+               return a.name.official.localeCompare(b.name.official);
+            }
+            return b.name.official.localeCompare(a.name.official);
+         });
+      }
+
+      if (sortingOrder.property === 'capitalName') {
+         return countries.sort((a, b) => {
+            if (sortingOrder.order === 'asc') {
+               return String(a.capital).localeCompare(b.capital);
+            }
+            return String(b.capital).localeCompare(a.capital);
+         });
+      }
+   };
 
    useEffect(
       () => {
@@ -37,7 +62,9 @@ export default function Home({ searchTerm }){
             />
          )}
 
-         {<Grid header={searchTerm ? `Results for ${searchTerm}` : 'All countries'} countries={countries} />}
+         <BreadCrumb setSortingOrder={setSortingOrder} />
+
+         {<Grid header={searchTerm ? `Results for ${searchTerm}` : 'All countries'} countries={sortedCountries()} />}
       </React.Fragment>
    );
 }
