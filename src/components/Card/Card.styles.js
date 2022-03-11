@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
       border-radius: 10px;
       color: #000;
       font-size: var(--font-size-M);
+      text-decoration: none;
    }
 `;
 

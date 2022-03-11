@@ -9,7 +9,7 @@ import Grid from './Grid/Grid';
 
 export default function Home({ searchTerm }){
    const [ randomCountry, setRandomCountry ] = useState({});
-   const { countries, loading, error } = useFetchCountries(searchTerm);
+   const { loading, error, errorMsg, countries } = useFetchCountries(searchTerm);
 
    useEffect(
       () => {
@@ -20,11 +20,7 @@ export default function Home({ searchTerm }){
    );
 
    if (error) {
-      return (
-         <div>
-            <h1>Something Went Wrong</h1>
-         </div>
-      );
+      return <h1>{errorMsg}</h1>;
    }
 
    if (loading) {
@@ -33,8 +29,13 @@ export default function Home({ searchTerm }){
 
    return (
       <React.Fragment>
-         {countries.length > 0 &&
-         !searchTerm && <Hero countryName={randomCountry.name.official} countryFlag={randomCountry.flags.svg} />}
+         {!searchTerm && (
+            <Hero
+               countryName={randomCountry.name.official}
+               countryFlag={randomCountry.flags.svg}
+               code={randomCountry.cca3}
+            />
+         )}
 
          {<Grid header={searchTerm ? `Results for ${searchTerm}` : 'All countries'} countries={countries} />}
       </React.Fragment>

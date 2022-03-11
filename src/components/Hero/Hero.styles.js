@@ -34,8 +34,9 @@ export const Content = styled.div`
          font-size: var(--font-size-XL);
       }
    }
-   button {
-      height: 50px;
+   a {
+      padding: 20px 0;
+      text-decoration: none;
       font-weight: 500;
       font-size: var(--font-size-M);
       background-color: var(--blue);
@@ -52,6 +53,10 @@ export const Content = styled.div`
       :active {
          box-shadow: inset 15px 15px 10px -5px rgba(0, 0, 0, 0.5);
          transform: translateY(-0);
+      }
+      a {
+         text-decoration: none;
+         color: var(--white);
       }
    }
 `;

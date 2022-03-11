@@ -23,12 +23,9 @@ export const GlobalStyles = createGlobalStyle`
     button{
         cursor:pointer;
     }
-    a{
-        text-decoration:none;
-        color:#fff;
-    }
-
+   
     body{
+        background-color:var(--paleBlue);
         margin:0;
         padding:0;
         h1{

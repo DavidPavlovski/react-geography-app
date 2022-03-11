@@ -8,6 +8,10 @@ const api_settings = {
    searchCountries: async function(searchTerm){
       const endpoint = `${BASE_URL}/name/${searchTerm}`;
       return await (await fetch(endpoint)).json();
+   },
+   fetchCountry: async function(code){
+      const endpoint = `${BASE_URL}/alpha/${code}`;
+      return await (await fetch(endpoint)).json();
    }
 };
 

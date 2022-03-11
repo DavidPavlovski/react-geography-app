@@ -7,6 +7,9 @@ export const Wrapper = styled.nav`
    padding: 0 40px;
    justify-content: space-between;
    background-color: var(--blue);
+   a {
+      text-decoration: none;
+   }
 `;
 
 export const Logo = styled.div`

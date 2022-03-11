@@ -1,43 +1,28 @@
 import { useState, useEffect } from 'react';
 
-import COUNTRIES_API from '../COUNTRIES_API';
+import API from '../COUNTRIES_API';
 
 const useFetchCountries = (searchTerm = '') => {
-   const [ countries, setCountries ] = useState([]);
-   const [ loading, setLoading ] = useState(false);
+   const [ loading, setLoading ] = useState(true);
    const [ error, setError ] = useState(false);
+   const [ errorMsg, setErrorMsg ] = useState('');
+   const [ countries, setCountries ] = useState([]);
 
-   const fetchCountries = async () => {
+   const fetchCountries = async (searchTerm = '') => {
       try {
-         setError(false);
          setLoading(true);
-         const data = await COUNTRIES_API.fetchCountries();
+         setError(false);
+         const data = searchTerm ? await API.searchCountries(searchTerm) : await API.fetchCountries();
+         if ((data.status === 404 && searchTerm) || !data.length) {
+            throw Error(`Cannot find results for ${searchTerm}`);
+         }
          setCountries(data);
          setLoading(false);
       } catch (e) {
          setError(true);
+         setErrorMsg(e.message);
+         setLoading(false);
       }
-   };
-
-   const searchCountries = async (searchTerm) => {
-      setLoading(true);
-      setError(false);
-      await fetch(`https://restcountries.com/v3.1/name/${searchTerm}`)
-         .then((res) => {
-            if (!res.ok) {
-               setError(true);
-               setLoading(false);
-            }
-            return res.json();
-         })
-         .then((data) => {
-            setLoading(false);
-            setCountries(data);
-         })
-         .catch((e) => {
-            setLoading(false);
-            setError(true);
-         });
    };
 
    useEffect(
@@ -47,7 +32,7 @@ const useFetchCountries = (searchTerm = '') => {
             return;
          }
          const timer = setTimeout(() => {
-            searchCountries(searchTerm);
+            fetchCountries(searchTerm);
          }, 500);
 
          return () => clearTimeout(timer);
@@ -55,7 +40,7 @@ const useFetchCountries = (searchTerm = '') => {
       [ searchTerm ]
    );
 
-   return { countries, loading, error };
+   return { loading, error, errorMsg, countries };
 };
 
 export default useFetchCountries;

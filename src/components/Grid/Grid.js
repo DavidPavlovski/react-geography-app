@@ -9,7 +9,12 @@ export default function Grid({ header, countries }){
          <h2>{header}</h2>
          <Content>
             {countries.map((country) => (
-               <Card key={country.name.official} countryName={country.name.official} countryFlag={country.flags.png} />
+               <Card
+                  key={country.name.official}
+                  countryName={country.name.official}
+                  countryFlag={country.flags.png}
+                  code={country.cca3}
+               />
             ))}
          </Content>
       </Wrapper>
