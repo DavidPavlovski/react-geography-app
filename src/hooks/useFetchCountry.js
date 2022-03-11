@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import API from '../COUNTRIES_API';
 
 const useFetchCountry = (name) => {
-   console.log('render');
    const [ loading, setLoading ] = useState(true);
    const [ error, setError ] = useState(false);
    const [ errorMsg, setErrorMsg ] = useState('');
