@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ButtonLink = styled(Link)`
-   width: 50%;
+   width: 70%;
    margin: 0 auto 10px;
    text-align:center;
    padding: 20px 0;

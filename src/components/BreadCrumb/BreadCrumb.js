@@ -27,7 +27,7 @@ export default function BreadCrumb({ setSortingOrder }){
                </select>
             </div>
          </div>
-         <Button path='/'>Test your geography knowlege</Button>
+         <Button path='/quiz'>Test your geography knowlege</Button>
       </Wrapper>
    );
 }

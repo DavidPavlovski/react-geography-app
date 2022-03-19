@@ -10,6 +10,9 @@ export const Wrapper = styled.nav`
    a {
       text-decoration: none;
    }
+   @media screen and (max-width: 760px) {
+      padding: 0 10px;
+   }
 `;
 
 export const Logo = styled.div`
@@ -23,6 +26,14 @@ export const Logo = styled.div`
    h3 {
       color: var(--white);
       font-size: var(--font-size-L);
+   }
+   @media screen and (max-width: 760px) {
+      img {
+         width: 50px;
+      }
+      h3 {
+         font-size: var(--font-size-S);
+      }
    }
 `;
 

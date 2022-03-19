@@ -1,64 +1,59 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+   display: flex;
+   flex-direction: column;
    @media screen and (max-width: 760px) {
       display: flex;
       flex-direction: column;
    }
-
    h1,
    h2 {
-      margin-top: 0;
+      margin: 20px 0;
       text-align: center;
    }
 `;
 
-export const Images = styled.div`
-   width: 100%;
-   display: flex;
-   justify-content: space-evenly;
+export const Image = styled.img`height: 340px;`;
 
-   div {
-      h2 {
-         text-align: center;
-      }
-      img {
-         max-height: 240px;
-      }
+export const Content = styled.div`
+   width: 80%;
+   margin: 10px auto;
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-evenly;
+   p,
+   ul {
+      font-size: var(--font-size-L);
+      font-weight: 600;
+      letter-spacing: 1.1px;
    }
-   @media screen and (max-width: 760px) {
+
+   @media screen and (max-width: 1300px) {
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      justify-content: center;
+      img {
+         order: 0;
+      }
+      div {
+         order: 1;
+      }
    }
 `;
 
-export const Content = styled.div`
+export const Links = styled.div`
+   width: 70%;
+   margin: 20px auto 0;
    display: flex;
-   flex-flow: row wrap;
-   gap: 20px;
-   align-items: flex-start;
-   justify-content: space-evenly;
-   padding: 40px 20px;
-
-   div {
-      background-color: var(--lightBlue);
-      padding: 20px;
-      height: 200px;
-      width: 400px;
-      overflow-y: auto;
-      border: 5px solid var(--darkBlue);
-      border-radius: 10px;
-      @media screen and (max-width: 760px) {
-         width: 100%;
-      }
-   }
-   * {
-      font-size: var(--font-size-M);
+   justify-content: space-between;
+   align-items: center;
+   font-size: var(--font-size-L);
+   a {
+      text-decoration: none;
    }
    @media screen and (max-width: 760px) {
-      gap: 20px;
-      flex-direction: column;
+      width: 100%;
+      padding: 0 20px;
+      font-size: var(--font-size-M);
    }
 `;

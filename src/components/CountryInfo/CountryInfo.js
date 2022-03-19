@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Wrapper, Images, Content } from './CountryInfo.styles';
+import { Wrapper, Content, Image, Links } from './CountryInfo.styles';
 import { Link } from 'react-router-dom';
 
 export default function CountryInfo({ country }){
@@ -27,45 +27,37 @@ export default function CountryInfo({ country }){
    ));
 
    const languages = Object.keys(country.languages).map((key) => <li key={key}>{country.languages[key]}</li>);
-   return (
-      <React.Fragment>
-         <Wrapper>
-            <h1>{country.name.official}</h1>
-            <h2>Capital : {country.capital[0]}</h2>
-            <Images>
-               <div>
-                  <h2>Flag</h2>
-                  <img src={country.flags.svg} alt={`flag of ${country.name.official}`} />
-               </div>
-               <div>
-                  <h2>Coat of arms</h2>
-                  <img src={country.coatOfArms.svg} alt={`coat of arms  of ${country.name.official}`} />
-               </div>
-            </Images>
 
-            <Content>
-               <div>
-                  {country.borders ? <ul>Borders : {borders}</ul> : <p>Does not border with any other country</p>}
-               </div>
-               <div>
-                  <ul>Continent : {country.continents.map((c) => <li key={c}>{c}</li>)}</ul>
-               </div>
-               <div>
-                  <ul>Native names : {nativeNames}</ul>
-                  <ul>Languages : {languages}</ul>
-               </div>
-               <div>
-                  <p>
-                     Area : {country.area} km<sup>2</sup>
-                  </p>
-                  <p>Population : {country.population}</p>
-               </div>
-               <div>
-                  <ul>Currencies : {currency}</ul>
-               </div>
-            </Content>
-         </Wrapper>
-      </React.Fragment>
+   return (
+      <Wrapper>
+         <Links>
+            <a href='/'>Home</a>
+            <a href={`https://en.wikipedia.org/wiki/${country.name.official.replaceAll(' ', '_')}`} target='blank'>
+               Wikipedia page
+            </a>
+         </Links>
+         <h1>{country.name.official}</h1>
+         <h2>Capital : {country.capital[0]}</h2>
+         <Content>
+            <Image src={country.flags.svg} alt={`flag of ${country.name.official}`} />
+            <div>
+               <ul>Continent : {country.continents.map((c) => <li key={c}>{c}</li>)}</ul>
+               <ul>Native names : {nativeNames}</ul>
+               <ul>Languages : {languages}</ul>
+            </div>
+         </Content>
+         <Content>
+            <div>
+               {country.borders ? <ul>Borders: {borders}</ul> : <p>Does not border with any other country</p>}
+               <p>
+                  Area : {country.area} km<sup>2</sup>
+               </p>
+               <p>Population : {country.population}</p>
+               <ul>Currencies : {currency}</ul>
+            </div>
+            <Image src={country.coatOfArms.svg} alt={`coat of arms  of ${country.name.official}`} />
+         </Content>
+      </Wrapper>
    );
 }
 
