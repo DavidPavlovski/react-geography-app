@@ -32,7 +32,7 @@ export const Logo = styled.div`
          width: 50px;
       }
       h3 {
-         font-size: var(--font-size-S);
+         display: none;
       }
    }
 `;

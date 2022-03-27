@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
       width: 50%;
       gap: 10px;
       align-items: center;
-
       .input-group {
          label {
             font-size: var(--font-size-S);
@@ -29,6 +28,16 @@ export const Wrapper = styled.div`
             height: 30px;
             font-size: var(--font-size-S);
          }
+      }
+   }
+   @media screen and (max-width: 760px) {
+      flex-direction: column;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      .sort-options {
+         margin-bottom: 10px;
+         width: 100%;
       }
    }
 `;
