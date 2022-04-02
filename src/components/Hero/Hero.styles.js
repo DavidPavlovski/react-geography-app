@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
    display: flex;
    height: 480px;
-
    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.5) 100%),
       url(${({ countryFlag }) => countryFlag});
    background-color: var(--paleBlue);
@@ -11,6 +10,9 @@ export const Wrapper = styled.div`
    background-size: 100% 480px;
    background-repeat: no-repeat;
    margin: 0;
+   @media screen and (max-width: 760px) {
+      height: 320px;
+   }
 `;
 
 export const Content = styled.div`

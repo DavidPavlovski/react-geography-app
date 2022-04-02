@@ -13,22 +13,29 @@ export const Wrapper = styled.form`
    border: 5px solid var(--blue);
    border-radius: 10px;
 
-   @media screen and (max-width: 760px) {
-      width: 100%;
+   div {
+      display: flex;
+      align-items: center;
+
+      select,
+      label {
+         font-size: var(--font-size-M);
+      }
+      select {
+         text-indent: 10px;
+         margin-left: 10px;
+         width: 150px;
+         height: 40px;
+      }
    }
-   div select,
-   label {
-      font-size: var(--font-size-M);
-   }
-   div select {
-      text-indent: 10px;
-      margin-left: 10px;
-      width: 150px;
-      height: 40px;
-   }
+
    button {
       padding: 10px;
-      width: 25%;
+      width: 50%;
       font-size: var(--font-size-M);
+   }
+
+   @media screen and (max-width: 760px) {
+      width: 100%;
    }
 `;

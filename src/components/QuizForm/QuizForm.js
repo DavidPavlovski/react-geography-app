@@ -15,7 +15,7 @@ function QuizForm({ handleChange, handleSubmit, quizSettings }){
          </div>
 
          <div>
-            <label htmlFor='num-questions'>Number of Questions</label>
+            <label htmlFor='num-questions'>Questions</label>
             <select
                id='num-questions'
                name='numberOfQuestions'
@@ -27,7 +27,7 @@ function QuizForm({ handleChange, handleSubmit, quizSettings }){
                <option value={20}>20</option>
             </select>
          </div>
-         <button>Submit</button>
+         <button>Start Quiz</button>
       </Wrapper>
    );
 }

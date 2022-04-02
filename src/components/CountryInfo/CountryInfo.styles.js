@@ -14,7 +14,12 @@ export const Wrapper = styled.div`
    }
 `;
 
-export const Image = styled.img`height: 340px;`;
+export const Image = styled.img`
+   height: 340px;
+   @media screen and (max-width: 760px) {
+      height: 170px;
+   }
+`;
 
 export const Content = styled.div`
    width: 80%;

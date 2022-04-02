@@ -29,7 +29,11 @@ export const Wrapper = styled.div`
             font-size: var(--font-size-S);
          }
       }
+      @media screen and (max-width: 760px) {
+         justify-content: space-evenly;
+      }
    }
+
    @media screen and (max-width: 760px) {
       flex-direction: column;
       padding: 10px;
