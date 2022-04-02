@@ -1,11 +1,15 @@
 import React from 'react';
 
+import iso from 'iso-3166-1';
+
 import PropTypes from 'prop-types';
 
 import { Wrapper, Content, Image, Links } from './CountryInfo.styles';
 import { Link } from 'react-router-dom';
 
 export default function CountryInfo({ country }){
+   console.log(iso);
+
    const nativeNames = Object.keys(country.name.nativeName).map((key) => (
       <li key={key}>
          <b>{key}</b>: {country.name.nativeName[key].official}
@@ -16,7 +20,7 @@ export default function CountryInfo({ country }){
       country.borders &&
       country.borders.map((border) => (
          <li key={border}>
-            <Link to={`/country/${border}`}>{border}</Link>
+            <Link to={`/country/${border}`}>{iso.whereAlpha3(border).country}</Link>
          </li>
       ));
 
