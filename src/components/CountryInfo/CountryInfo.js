@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { Wrapper, Content, Image, Links } from './CountryInfo.styles';
 
 export default function CountryInfo({ country }){
-   console.log(iso);
-
    const nativeNames = Object.keys(country.name.nativeName).map((key) => (
       <li key={key}>
          <b>{key}</b>: {country.name.nativeName[key].official}
@@ -16,11 +14,15 @@ export default function CountryInfo({ country }){
 
    const borders =
       country.borders &&
-      country.borders.map((border) => (
-         <li key={border}>
-            <Link to={`/country/${border}`}>{iso.whereAlpha3(border).country}</Link>
-         </li>
-      ));
+      country.borders.map((border) => {
+         let borderName = !!iso.whereAlpha3(border) ? iso.whereAlpha3(border).country : border;
+         console.log(borderName);
+         return (
+            <li key={border}>
+               <Link to={`/country/${border}`}>{borderName}</Link>
+            </li>
+         );
+      });
 
    const currency = Object.keys(country.currencies).map((key) => (
       <li key={key}>
