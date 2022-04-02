@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 import { Wrapper, Content, Image, Links } from './CountryInfo.styles';
 
 export default function CountryInfo({ country }){
-   const nativeNames = Object.keys(country.name.nativeName).map((key) => (
-      <li key={key}>
-         <b>{key}</b>: {country.name.nativeName[key].official}
-      </li>
-   ));
+   const nativeNames =
+      country.name.nativeName &&
+      Object.keys(country.name.nativeName).map((key) => (
+         <li key={key}>
+            <b>{key}</b>: {country.name.nativeName[key].official}
+         </li>
+      ));
 
    const borders =
       country.borders &&
@@ -23,13 +25,16 @@ export default function CountryInfo({ country }){
          );
       });
 
-   const currency = Object.keys(country.currencies).map((key) => (
-      <li key={key}>
-         {country.currencies[key].name} {country.currencies[key].symbol}
-      </li>
-   ));
+   const currency =
+      country.currencies &&
+      Object.keys(country.currencies).map((key) => (
+         <li key={key}>
+            {country.currencies[key].name} (<b>{country.currencies[key].symbol}</b>)
+         </li>
+      ));
 
-   const languages = Object.keys(country.languages).map((key) => <li key={key}>{country.languages[key]}</li>);
+   const languages =
+      country.languages && Object.keys(country.languages).map((key) => <li key={key}>{country.languages[key]}</li>);
 
    return (
       <Wrapper>
@@ -40,13 +45,13 @@ export default function CountryInfo({ country }){
             </a>
          </Links>
          <h1>{country.name.official}</h1>
-         <h2>Capital : {country.capital[0]}</h2>
+         <h2>Capital : {country.capital ? country.capital[0] : 'None'}</h2>
          <Content>
             <Image src={country.flags.svg} alt={`flag of ${country.name.official}`} />
             <div>
                <ul>Continent : {country.continents.map((c) => <li key={c}>{c}</li>)}</ul>
-               <ul>Native names : {nativeNames}</ul>
-               <ul>Languages : {languages}</ul>
+               <ul>Native names : {nativeNames || <li>None</li>}</ul>
+               <ul>Languages : {languages || <li>None</li>}</ul>
             </div>
          </Content>
          <Content>
@@ -56,7 +61,7 @@ export default function CountryInfo({ country }){
                   Area : {country.area} km<sup>2</sup>
                </p>
                <p>Population : {country.population}</p>
-               <ul>Currencies : {currency}</ul>
+               <ul>Currencies : {currency || <li>None</li>}</ul>
             </div>
             <Image src={country.coatOfArms.svg} alt={`coat of arms  of ${country.name.official}`} />
          </Content>
