@@ -1,6 +1,6 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+
 import { Answer, Wrapper, Navigation, Button } from './QuestionCard.styles';
 
 function QuestionsCard({

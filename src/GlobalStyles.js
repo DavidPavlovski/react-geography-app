@@ -20,6 +20,9 @@ export const GlobalStyles = createGlobalStyle`
          box-sizing:border-box;
          font-family :'Raleway' , sans-serif;
     }
+    h1,h2,h3{
+        text-align:center;
+    }
     button{
         cursor:pointer;
     }
@@ -34,6 +37,15 @@ export const GlobalStyles = createGlobalStyle`
         }
         p{
             font-size:var(--font-size-S);
+        }
+    }
+    .not-found{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        a{
+            width:300px;
         }
     }
 `;

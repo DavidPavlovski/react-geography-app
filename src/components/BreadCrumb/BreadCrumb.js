@@ -1,9 +1,9 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import { Wrapper } from './BreadCrumb.style';
 import Button from '../Button/Button';
+
 export default function BreadCrumb({ setSortingOrder }){
    const handleChange = (e) => {
       setSortingOrder((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));

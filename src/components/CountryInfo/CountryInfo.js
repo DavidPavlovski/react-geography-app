@@ -1,11 +1,9 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import iso from 'iso-3166-1';
-
 import PropTypes from 'prop-types';
 
 import { Wrapper, Content, Image, Links } from './CountryInfo.styles';
-import { Link } from 'react-router-dom';
 
 export default function CountryInfo({ country }){
    console.log(iso);

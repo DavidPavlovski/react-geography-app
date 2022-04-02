@@ -1,10 +1,9 @@
 import React from 'react';
-
-import Button from '../Button/Button';
+import PropTypes from 'prop-types';
 
 import { Wrapper, Image } from './Card.styles';
+import Button from '../Button/Button';
 
-import PropTypes from 'prop-types';
 export default function Card({ countryName, countryFlag, code, capital }){
    return (
       <Wrapper>
