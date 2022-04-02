@@ -16,7 +16,6 @@ export default function CountryInfo({ country }){
       country.borders &&
       country.borders.map((border) => {
          let borderName = !!iso.whereAlpha3(border) ? iso.whereAlpha3(border).country : border;
-         console.log(borderName);
          return (
             <li key={border}>
                <Link to={`/country/${border}`}>{borderName}</Link>
